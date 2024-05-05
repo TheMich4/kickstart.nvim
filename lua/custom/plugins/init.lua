@@ -6,7 +6,6 @@ vim.keymap.set('n', 'tt', ':NvimTreeToggle<cr>', { desc = '[T]oggle [T]ree' })
 -- See the kickstart.nvim README for more information
 return {
   'github/copilot.vim',
-  'ThePrimeagen/harpoon',
   -- {
   --   'nvim-tree/nvim-tree.lua',
   --   version = '*',
