@@ -662,7 +662,10 @@ require('lazy').setup({
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { { 'prettierd', 'prettier' } },
+        javascriptreact = { { 'prettierd', 'prettier' } },
+        typescript = { { 'prettierd', 'prettier' } },
+        typescriptreact = { { 'prettierd', 'prettier' } },
       },
     },
   },
@@ -917,6 +920,7 @@ require('lazy').setup({
 -- vim: ts=2 sts=2 sw=2 et
 
 -- VSCode
-if (vim.g.vscode) then
+if vim.g.vscode then
   vim.cmd('source ', '~/.config/nvim/vscode.vim')
 end
+
