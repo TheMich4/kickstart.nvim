@@ -30,6 +30,9 @@ return {
       vim.keymap.set('n', '<leader>sH', function()
         toggle_telescope(harpoon:list())
       end, { desc = '[S]search [H]arpoon' })
+      vim.keymap.set('n', '<C-s>', function()
+        toggle_telescope(harpoon:list())
+      end, { desc = '[S]search [H]arpoon' })
 
       vim.keymap.set('n', '<C-a>', function()
         harpoon:list():add()
