@@ -369,6 +369,10 @@ require('lazy').setup({
             require('telescope.themes').get_dropdown(),
           },
         },
+
+        defaults = {
+          file_ignore_patterns = { 'node_modules', '.git', 'app/public/help' },
+        },
       }
 
       -- Enable Telescope extensions if they are installed
@@ -923,4 +927,3 @@ require('lazy').setup({
 if vim.g.vscode then
   vim.cmd('source ', '~/.config/nvim/vscode.vim')
 end
-
