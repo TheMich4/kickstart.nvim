@@ -165,6 +165,12 @@ vim.opt.tabstop = 2
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Quickfix keymaps
+vim.keymap.set('n', '<leader>qo', vim.cmd.copen, { desc = '[Q]uickfix [O]pen' })
+vim.keymap.set('n', '<leader>qc', vim.cmd.cclose, { desc = '[Q]uickfix [C]lose' })
+vim.keymap.set('n', '<leader>qn', vim.cmd.cnext, { desc = '[Q]uickfix [N]ext' })
+vim.keymap.set('n', '<leader>qp', vim.cmd.cprevious, { desc = '[Q]uickfix [P]revious' })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
@@ -392,6 +398,10 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
+      vim.keymap.set('n', '<leader>ca', function()
+        require('tiny-code-action').code_action()
+      end, { noremap = true, silent = true, desc = '[C]ode [A]ction' })
+
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
@@ -506,7 +516,7 @@ require('lazy').setup({
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+          -- map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
           -- Opens a popup that displays documentation about the word under your cursor
           --  See `:help K` for why this keymap.
