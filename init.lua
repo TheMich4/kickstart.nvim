@@ -166,10 +166,10 @@ vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Quickfix keymaps
-vim.keymap.set('n', '<leader>qo', vim.cmd.copen, { desc = '[Q]uickfix [O]pen' })
-vim.keymap.set('n', '<leader>qc', vim.cmd.cclose, { desc = '[Q]uickfix [C]lose' })
-vim.keymap.set('n', '<leader>qn', vim.cmd.cnext, { desc = '[Q]uickfix [N]ext' })
-vim.keymap.set('n', '<leader>qp', vim.cmd.cprevious, { desc = '[Q]uickfix [P]revious' })
+vim.keymap.set('n', 'qo', vim.cmd.copen, { desc = '[Q]uickfix [O]pen' })
+vim.keymap.set('n', 'qc', vim.cmd.cclose, { desc = '[Q]uickfix [C]lose' })
+vim.keymap.set('n', 'qn', vim.cmd.cnext, { desc = '[Q]uickfix [N]ext' })
+vim.keymap.set('n', 'qp', vim.cmd.cprevious, { desc = '[Q]uickfix [P]revious' })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -432,6 +432,7 @@ require('lazy').setup({
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+      -- 'schrieveslaach/sonarlint.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -596,6 +597,11 @@ require('lazy').setup({
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
         --
+
+        ['sonarlint-language-server'] = {
+          filetypes = { 'typescript', 'typescriptreact', 'js' },
+        },
+        -- ['sonarlint.nvim'] = {},
 
         lua_ls = {
           -- cmd = {...},
