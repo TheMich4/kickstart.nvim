@@ -224,10 +224,9 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 local gdproject = io.open(vim.fn.getcwd() .. '/project.godot', 'r')
-print('====', gdproject)
 if gdproject then
   io.close(gdproject)
-  vim.fn.serverstart './godothost'
+  -- vim.fn.serverstart './godothost'
 end
 
 -- [[ Configure and install plugins ]]
@@ -655,6 +654,15 @@ require('lazy').setup({
           end,
         },
       }
+
+      local gdscript_config = {
+        capabilities = capabilities,
+        settings = {},
+      }
+      if vim.fn.has 'win32' == 1 then
+        gdscript_config['cmd'] = { 'ncat', 'localhost', os.getenv 'GDScript_Port' or '6005' }
+      end
+      require('lspconfig').gdscript.setup(gdscript_config)
     end,
   },
 
@@ -694,6 +702,7 @@ require('lazy').setup({
         javascriptreact = { { 'prettierd', 'prettier' } },
         typescript = { { 'prettierd', 'prettier' } },
         typescriptreact = { { 'prettierd', 'prettier' } },
+        gdscript = { 'gdformat' },
       },
     },
   },
@@ -871,7 +880,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'gdscript' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -881,7 +890,7 @@ require('lazy').setup({
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
         additional_vim_regex_highlighting = { 'ruby' },
       },
-      indent = { enable = true, disable = { 'ruby' } },
+      indent = { enable = true, disable = { 'ruby', 'gdscript' } },
     },
     config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
