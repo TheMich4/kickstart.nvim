@@ -14,4 +14,34 @@ return {
       },
     },
   },
+
+  {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    opts = {},
+    -- keys = {
+    --   { '<leader>Tf', '<cmd>TSToolsFixAll<cr>', desc = '[T]ypescript [F]ix All' },
+    --   { '<leader>Ti', '<cmd>TSToolsAddMissingImports<cr>', desc = '[T]ypescript Add [I]mports' },
+    --   { '<leader>Tr', '<cmd>TSRemoveUnused<cr>', desc = '[T]ypescript [R]emove Unused' },
+    -- },
+    config = function()
+      require('typescript-tools').setup {
+        settings = {
+          code_lens = 'all',
+          tsserver_locale = 'en', -- default 'en', can be 'pl'
+
+          tsserver_file_preferences = {
+            includeInlayEnumMemberValueHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayParameterNameHints = 'all',
+            includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeCompletionsForModuleExports = true,
+          },
+        },
+      }
+    end,
+  },
 }
