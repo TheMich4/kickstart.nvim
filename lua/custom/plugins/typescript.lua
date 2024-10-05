@@ -19,11 +19,6 @@ return {
     'pmizio/typescript-tools.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {},
-    -- keys = {
-    --   { '<leader>Tf', '<cmd>TSToolsFixAll<cr>', desc = '[T]ypescript [F]ix All' },
-    --   { '<leader>Ti', '<cmd>TSToolsAddMissingImports<cr>', desc = '[T]ypescript Add [I]mports' },
-    --   { '<leader>Tr', '<cmd>TSRemoveUnused<cr>', desc = '[T]ypescript [R]emove Unused' },
-    -- },
     config = function()
       require('typescript-tools').setup {
         settings = {
@@ -43,5 +38,9 @@ return {
         },
       }
     end,
+
+    vim.keymap.set('n', '<leader>Tf', '<cmd>TSToolsFixAll<cr>', { desc = '[T]ypescript [F]ix All' }),
+    vim.keymap.set('n', '<leader>Ti', '<cmd>TSToolsAddMissingImports<cr>', { desc = '[T]ypescript Add [I]mports' }),
+    vim.keymap.set('n', '<leader>Tr', '<cmd>TSRemoveUnused<cr>', { desc = '[T]ypescript [R]emove Unused' }),
   },
 }
