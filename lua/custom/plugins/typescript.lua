@@ -22,7 +22,7 @@ return {
     config = function()
       require('typescript-tools').setup {
         settings = {
-          code_lens = 'all',
+          -- code_lens = 'all',
           tsserver_locale = 'en', -- default 'en', can be 'pl'
 
           tsserver_file_preferences = {
