@@ -5,11 +5,34 @@ return {
       { 'nvim-telescope/telescope.nvim' },
     },
     config = function()
-      require('notify').setup()
+      require('notify').setup {
+        background_colour = 'NotifyBackground',
+        fps = 120,
+        icons = {
+          DEBUG = '',
+          ERROR = '',
+          INFO = '',
+          TRACE = '✎',
+          WARN = '',
+        },
+        level = 2,
+        minimum_width = 50,
+        render = 'compact',
+        stages = 'fade_in_slide_out',
+        time_formats = {
+          notification = '%T',
+          notification_history = '%FT%T',
+        },
+        timeout = 3000,
+        top_down = false,
+      }
 
       vim.keymap.set('n', '<leader>sN', function()
         require('telescope').extensions.notify.notify()
       end, { desc = '[S]earch [N]otifications' })
+      vim.keymap.set('n', '<leader>nd', function()
+        require('notify').dismiss { pending = true, silent = true }
+      end, { desc = '[N]otification [D]ismiss All' })
     end,
   },
   {
