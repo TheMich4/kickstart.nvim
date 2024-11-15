@@ -34,7 +34,7 @@ options.ui = {
   },
 
   tabufline = {
-    enabled = true,
+    enabled = false,
     lazyload = true,
     order = { 'treeOffset', 'buffers', 'tabs' },
     modules = nil,
