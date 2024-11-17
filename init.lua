@@ -154,8 +154,16 @@ vim.opt.inccommand = 'split'
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
+-- Tab size
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Recommended by AVANTE
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
