@@ -172,7 +172,16 @@ vim.opt.laststatus = 3
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Quickfix keymaps
+vim.keymap.set('n', 'qo', vim.cmd.copen, { desc = '[Q]uickfix [O]pen' })
+vim.keymap.set('n', 'qc', vim.cmd.cclose, { desc = '[Q]uickfix [C]lose' })
+vim.keymap.set('n', 'q[', vim.cmd.cprevious, { desc = '[Q]uickfix Previous' })
+vim.keymap.set('n', 'q]', vim.cmd.cnext, { desc = '[Q]uickfix Next' })
+
 -- Diagnostic keymaps
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
