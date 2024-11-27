@@ -42,4 +42,11 @@ return {
     vim.keymap.set('n', '<leader>Ti', '<cmd>TSToolsAddMissingImports<cr>', { desc = '[T]ypescript Add [I]mports' }),
     vim.keymap.set('n', '<leader>Tr', '<cmd>TSRemoveUnused<cr>', { desc = '[T]ypescript [R]emove Unused' }),
   },
+
+  {
+    'dmmulroy/ts-error-translator.nvim',
+    config = function()
+      require('ts-error-translator').setup()
+    end,
+  },
 }
